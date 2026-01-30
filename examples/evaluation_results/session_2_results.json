@@ -1,0 +1,100 @@
+{
+  "session": 2,
+  "date": "2026-01-30T02:13:56.914409",
+  "prompt_comparison": {
+    "versions_tested": [
+      "v1_basic",
+      "v2_structured",
+      "v3_examples"
+    ],
+    "best_version": "v2_structured",
+    "best_score": 100.0,
+    "detailed_results": {
+      "v1_basic": {
+        "scores": {
+          "has_description": false,
+          "has_args": true,
+          "has_returns": true,
+          "has_example": false,
+          "length_appropriate": true,
+          "formatting_correct": true
+        },
+        "completeness": 66.7,
+        "word_count": 161,
+        "character_count": 948,
+        "rating": "Acceptable \u2b50\u2b50\u2b50"
+      },
+      "v2_structured": {
+        "scores": {
+          "has_description": true,
+          "has_args": true,
+          "has_returns": true,
+          "has_example": true,
+          "length_appropriate": true,
+          "formatting_correct": true
+        },
+        "completeness": 100.0,
+        "word_count": 62,
+        "character_count": 389,
+        "rating": "Excellent \u2b50\u2b50\u2b50\u2b50\u2b50"
+      },
+      "v3_examples": {
+        "scores": {
+          "has_description": false,
+          "has_args": true,
+          "has_returns": true,
+          "has_example": true,
+          "length_appropriate": false,
+          "formatting_correct": true
+        },
+        "completeness": 66.7,
+        "word_count": 37,
+        "character_count": 239,
+        "rating": "Acceptable \u2b50\u2b50\u2b50"
+      }
+    }
+  },
+  "test_suite": {
+    "total_functions": 5,
+    "average_completeness": 83.3,
+    "average_word_count": 64.0,
+    "individual_results": [
+      {
+        "function": "factorial",
+        "completeness": 83.3,
+        "rating": "Good \u2b50\u2b50\u2b50\u2b50",
+        "word_count": 51
+      },
+      {
+        "function": "validate_email",
+        "completeness": 66.7,
+        "rating": "Acceptable \u2b50\u2b50\u2b50",
+        "word_count": 30
+      },
+      {
+        "function": "binary_search",
+        "completeness": 100.0,
+        "rating": "Excellent \u2b50\u2b50\u2b50\u2b50\u2b50",
+        "word_count": 79
+      },
+      {
+        "function": "chunk_list",
+        "completeness": 100.0,
+        "rating": "Excellent \u2b50\u2b50\u2b50\u2b50\u2b50",
+        "word_count": 114
+      },
+      {
+        "function": "fetch_data",
+        "completeness": 66.7,
+        "rating": "Acceptable \u2b50\u2b50\u2b50",
+        "word_count": 48
+      }
+    ]
+  },
+  "improvements_from_session_1": {
+    "added_ast_integration": true,
+    "added_evaluation_metrics": true,
+    "tested_multiple_prompts": true,
+    "created_test_suite": true
+  }
+}
