@@ -1,4 +1,41 @@
 # Development Log
+
+## Session 4 - 2026-03-12
+**Duration:** 2 hours
+**Status:** ⚠️ Partially Complete
+**Platform:** HuggingFace Spaces (attempted deployment)
+
+### Attempted
+- Deployment to HuggingFace Spaces for permanent demo URL
+- ZeroGPU integration for free GPU access
+- Multiple iterations to fix build and runtime errors
+
+### Challenges Encountered
+- **Build errors:** Gradio/Python version compatibility issues
+- **Runtime errors:** Model loading timeouts on free tier
+- **Performance issues:** 3-6 minute generation times
+- **Quality issues:** Inconsistent output, sometimes non-English
+- **Infrastructure limitations:** 13GB model too large for reliable free tier
+
+### Key Learnings
+- Free GPU services have strict timeouts and limitations
+- Large models (13GB+) require significant resources
+- Model transfer CPU→GPU takes time each request on free tier
+- Deployment complexity increases with infrastructure constraints
+
+### Decision
+- Focus on working Kaggle demo
+- Create comprehensive setup guide for others to run demo
+- Honest about infrastructure requirements
+- Portfolio value is in evaluation framework and design, not just deployment
+
+### Files Created/Updated
+- `KAGGLE_DEMO_GUIDE.md` - Complete step-by-step setup instructions
+- `README.md` - Updated with link to demo guide
+- `docs/session-notes.md` - This file
+
+---
+
 ## Session 3 - 2026-03-11
 **Duration:** 1.5 hours
 **Status:** ✅ Complete
@@ -7,21 +44,21 @@
 ### Completed
 - ✅ Created interactive Gradio web interface
 - ✅ Successfully tested on Kaggle with GPU
-- ✅ Verified 5-10 second generation time
 - ✅ Tested with multiple example functions
-- ✅ Confirmed all Session 1-2 code works in production
+- ✅ Confirmed end-to-end functionality
 
 ### Key Achievements
 - Working Gradio demo with professional UI
-- GPU-accelerated generation (5-10 sec per function)
 - Proven end-to-end functionality
 
-### Next Session Goals (Session 4)
-- Deploy to Hugging Face Spaces for permanent demo URL
-- Add multiple documentation styles (Google/NumPy/Sphinx)
-- Create style comparison feature
+### Performance Observations
+- **Actual generation time:** 3-5 minutes per function
+- **Model loading:** ~10 minutes on first run
+- **Subsequent runs:** Still 3-5 minutes due to GPU allocation
+- **Reason:** Large model size (13GB)
 
 ### Files Updated
+- Created Gradio interface in Kaggle notebook
 - `docs/session-notes.md` - This file
 
 ---
@@ -45,38 +82,32 @@
 - **Evaluation Criteria:** 6 quality metrics
 
 ### Observations
-- AST integration works smoothly - can now process entire files
-- Prompt v3 (with examples) performs best
-- Evaluation framework provides objective quality measurement
-- Average documentation completeness improved significantly
+- AST integration works smoothly
+- Prompt v2_structured performs best
+- Evaluation framework provides objective measurement
+- Average completeness improved significantly
 
 ### Technical Achievements
 - Built DocQualityEvaluator class with 6 metrics
 - Automated pipeline: parse → generate → evaluate
-- Comprehensive test suite covering different function types
-- Data-driven prompt selection (not just gut feeling)
+- Comprehensive test suite
+- Data-driven prompt selection
 
 ### Improvements from Session 1
 - **Before:** Manual function copying, no quality measurement
 - **After:** Automated extraction, objective evaluation metrics
 
-### Next Session Goals (Session 3)
-- Add multiple documentation styles (Google/NumPy/Sphinx)
-- Build comparison view (side-by-side styles)
-- Create Gradio web interface
-- Add streaming generation for better UX
-- Improve prompt based on evaluation insights
-
 ### Files Updated
-- `examples/prompt_comparison/results.json` - Prompt comparison data
-- `examples/evaluation_results/session_2_results.json` - Full evaluation results
-- `docs/session-notes.md` - This file
+- `examples/prompt_comparison/results.json`
+- `examples/evaluation_results/session_2_results.json`
+- `docs/session-notes.md`
 
 ---
 
 ## Session 1 - 2026-01-29
 **Duration:** 2 hours
 **Status:** ✅ Complete
+**Platform:** Google Colab (GPU T4)
 
 ### Completed
 - Repository structure created
@@ -87,11 +118,40 @@
 
 ### Observations
 - Model loaded successfully on T4 GPU
-- Generation takes ~5-10 seconds per function
-- Output quality is decent but needs refinement
-- Prompt engineering will be key to improvement
+- Generation takes time due to model size
+- Output quality needs refinement
+- Prompt engineering will be important
 
 ### Key Learnings
-- CodeLlama-7B works well on free Colab tier
+- CodeLlama-7B works on free Colab tier
 - Initial results are promising
-- Need to add evaluation metrics in next session
+- Need evaluation metrics
+
+### Files Created
+- `src/analyzer.py`
+- `src/generator.py`
+- `docs/architecture.md`
+- `requirements.txt`
+- `README.md`
+
+---
+
+## Summary
+
+**Total Duration:** ~7.5 hours across 4 sessions
+
+**Key Achievements:**
+- Working documentation generation system
+- 85%+ quality score via custom evaluation framework
+- Functional Gradio demo on Kaggle
+- Comprehensive documentation and setup guide
+
+**Main Challenge:**
+- Deployment complexity with large models on free infrastructure
+- Generation time longer than initially expected (3-5 min)
+
+**Portfolio Value:**
+- Demonstrates ML system design end-to-end
+- Shows evaluation rigor and data-driven optimization
+- Transparent about technical limitations and tradeoffs
+- Clear documentation of development journey and learnings

@@ -41,75 +41,36 @@ Input Code → AST Parser → Context Builder → CodeLlama-7B → Post-Processo
 
 ## 🚀 Demo
 
-### Working Demo on Kaggle
+### Interactive Demo on Kaggle
 
-**[Open Interactive Demo](https://kaggle.com/YOUR_NOTEBOOK_LINK)**
+**📋 [Step-by-Step Setup Guide](KAGGLE_DEMO_GUIDE.md)** ← Complete instructions to run the demo
 
-*Requires free Kaggle account with GPU enabled*
+*Requires free Kaggle account with GPU enabled (30 hours/week free)*
 
 **Performance:**
-- Generation: 5-10 seconds per function (with GPU)
-- Quality: 85%+ completeness (validated)
-- Supports: Async, decorators, complex functions
+- **Generation time:** 3-5 minutes per function
+- **Quality:** 85%+ completeness (validated)
+- **Model size:** 13GB (CodeLlama-7B)
+- **Supports:** Async, decorators, complex functions
 
-### Example Output
+**Note:** Generation time is longer due to model size and free GPU limitations. Each run requires loading the 13GB model to GPU, which takes time. This is expected behavior for large language models on free infrastructure.
 
-**Input:**
-```python
-def merge_sorted_lists(list1, list2):
-    result = []
-    i, j = 0, 0
-    while i < len(list1) and j < len(list2):
-        if list1[i] < list2[j]:
-            result.append(list1[i])
-            i += 1
-        else:
-            result.append(list2[j])
-            j += 1
-    result.extend(list1[i:])
-    result.extend(list2[j:])
-    return result
-```
+### How to Run
 
-**AI-Generated Output:**
-```python
-def merge_sorted_lists(list1, list2):
-    """
-    Merge two sorted lists into a single sorted list.
-    
-    Uses two-pointer technique to efficiently combine pre-sorted lists
-    while maintaining O(n + m) time complexity.
-    
-    Args:
-        list1 (list): First sorted list
-        list2 (list): Second sorted list
-    
-    Returns:
-        list: A new sorted list containing all elements from both inputs
-    
-    Example:
-        >>> merge_sorted_lists([1, 3, 5], [2, 4, 6])
-        [1, 2, 3, 4, 5, 6]
-    """
-    result = []
-    i, j = 0, 0
-    while i < len(list1) and j < len(list2):
-        if list1[i] < list2[j]:
-            result.append(list1[i])
-            i += 1
-        else:
-            result.append(list2[j])
-            j += 1
-    result.extend(list1[i:])
-    result.extend(list2[j:])
-    return result
-```
+See **[KAGGLE_DEMO_GUIDE.md](KAGGLE_DEMO_GUIDE.md)** for complete step-by-step instructions with all code cells to copy-paste.
+
+Quick summary:
+1. Create Kaggle notebook
+2. Enable GPU (T4 x2)
+3. Copy 7 code cells from guide
+4. Run all cells
+5. Use Gradio interface
 
 ## 💡 What Makes This Portfolio-Worthy
 
 ### Technical Depth
 - Custom evaluation framework (not just "it works")
-- Data-driven prompt optimization (A/B tested approaches)
+- Data-driven prompt optimization (A/B tested 3 approaches)
 - Production considerations (error handling, edge cases)
 - Modular architecture (analyzer, generator, evaluator)
 
@@ -131,7 +92,7 @@ def merge_sorted_lists(list1, list2):
 - **Framework:** PyTorch, Transformers
 - **Code Analysis:** Python AST module
 - **Interface:** Gradio (for demo)
-- **Development:** Kaggle Notebooks (GPU)
+- **Development:** Kaggle Notebooks (GPU T4)
 - **Version Control:** Git/GitHub
 
 ## 📁 Project Structure
@@ -139,69 +100,90 @@ def merge_sorted_lists(list1, list2):
 ai-code-doc-generator/
 ├── src/
 │   ├── analyzer.py          # AST-based code parsing
-│   ├── generator.py          # LLM documentation generation
-│   └── evaluator.py          # Quality metrics (Session 2)
+│   ├── generator.py         # LLM documentation generation
+│   └── __init__.py
 ├── docs/
-│   ├── architecture.md       # System design
-│   └── session-notes.md      # Development log
+│   ├── architecture.md      # System design
+│   └── session-notes.md     # Development log
 ├── examples/
-│   ├── evaluation_results/   # Quality metrics data
-│   └── prompt_comparison/    # A/B test results
-└── notebooks/
-    └── session_3_kaggle.ipynb # Interactive demo
+│   ├── evaluation_results/  # Quality metrics data
+│   └── prompt_comparison/   # A/B test results
+├── tests/
+│   └── __init__.py
+├── KAGGLE_DEMO_GUIDE.md     # How to run the demo
+├── README.md                # This file
+└── requirements.txt
 ```
 
 ## 📈 Development Journey
 
 ### Session 1: Foundation
-- Set up CodeLlama-7B pipeline
-- Basic documentation generation
+- Set up CodeLlama-7B pipeline on Colab
+- Basic documentation generation working
 - Initial architecture design
+- Tested on 3 functions
 
 ### Session 2: Evaluation & Optimization
 - Built 6-metric evaluation framework
 - A/B tested 3 prompt approaches
-- Achieved 85%+ completeness score
+- Achieved 85%+ average completeness score
 - Created test suite with 5 diverse functions
 
 ### Session 3: Interactive Demo
-- Deployed working Gradio interface on Kaggle
-- GPU-accelerated generation (5-10 seconds)
-- Professional UI with examples
+- Created Gradio web interface
+- Deployed on Kaggle with GPU
+- Tested with multiple example functions
+- Confirmed end-to-end functionality
+
+### Session 4: Deployment Attempts
+- Attempted deployment to HuggingFace Spaces
+- Encountered infrastructure limitations with free tier
+- Decided to focus on Kaggle demo for reliability
+- Created comprehensive demo guide
 
 [Full Development Log](docs/session-notes.md)
 
 ## 🎓 Key Learnings
 
 1. **Evaluation is Critical:** Without metrics, you can't prove quality or improvement
-2. **Prompt Engineering Matters:** v3 prompt achieved 100% vs v1's 68% completeness
-3. **Infrastructure Tradeoffs:** Free GPU (Kaggle) vs paid GPU vs API-based approach
-4. **AST > Regex:** Language-aware parsing handles edge cases better
+2. **Prompt Engineering Matters:** Structured prompts perform significantly better
+3. **Infrastructure Tradeoffs:** Large models require significant GPU resources
+4. **AST > Regex:** Language-aware parsing handles edge cases correctly
+5. **Deployment Reality:** Free GPU services have limitations for large models
 
 ## 🚀 Future Enhancements
 
 - [ ] Multiple documentation styles (NumPy, Sphinx)
 - [ ] Style comparison feature
+- [ ] Smaller model exploration for faster inference
 - [ ] Code quality analysis beyond documentation
-- [ ] Fine-tuning on domain-specific code
-- [ ] CI/CD integration
+- [ ] Batch processing for multiple files
 
 ## 🎯 For Recruiters
 
 This project demonstrates:
-- **ML Engineering:** End-to-end system design and deployment
-- **Evaluation Rigor:** Custom metrics, A/B testing, data-driven decisions
-- **Production Thinking:** Error handling, modularity, quality validation
-- **Communication:** Clear documentation, design decisions explained
 
-**Note on Deployment:** This system requires GPU for real-time inference. The Kaggle demo provides free GPU access for testing. Production deployment options include dedicated GPU instances (AWS/GCP), serverless GPU (Modal/Replicate), or API-based approaches.
+**ML Engineering:**
+- End-to-end system design and deployment
+- Working with large language models (13GB)
+- GPU-accelerated inference
+
+**Evaluation & Optimization:**
+- Custom evaluation framework with 6 metrics
+- A/B testing of prompt strategies
+- 85%+ quality improvement
+
+**Production Considerations:**
+- Error handling and edge cases
+- Modular architecture
+- Honest assessment of limitations
+
+**Note on Deployment:** This system requires GPU for inference. The 13GB model size results in 3-5 minute generation times on free GPU infrastructure. Production deployment options include dedicated GPU instances, serverless GPU platforms, or API-based approaches.
 
 ## 📞 Contact
 
-**GitHub:** [github.com/stevank23](ai-code-doc-generator)
-**LinkedIn:** [Your LinkedIn]
-**Email:** [your.email@example.com]
+**GitHub:** [github.com/stevank23/ai-code-doc-generator](https://github.com/stevank23/ai-code-doc-generator)
 
 ---
 
-Built as an AI Engineering portfolio project • 2026
+*Built as an AI Engineering portfolio project • 2026*
