@@ -223,6 +223,87 @@ ai-code-doc-generator/
 
 ---
 
+
+---
+
+## Deployment Attempts
+
+### HuggingFace Spaces (Session 4)
+
+**Attempted:** Deploy with ZeroGPU for free GPU access
+
+**Process:**
+1. Created Space with Gradio SDK
+2. Set up app.py, requirements.txt, README with proper versions
+3. Debugged build errors (Python 3.13, Gradio 5.0 compatibility)
+4. Attempted smaller models for easier deployment
+
+**Smaller Model Testing:**
+- Tested CodeGen-350M and similar alternatives
+- Goal: Solve deployment issues with smaller footprint
+- **Result:** Quality unacceptable
+  - Incomplete documentation
+  - Missing Args/Returns sections
+  - Poor code understanding
+  - Unusable output
+
+**Outcome:** Unsuccessful
+
+**Root causes:**
+- 13GB model too large for free tier (timeouts, memory limits)
+- 3-6 min generation unsuitable for web UI
+- Smaller models compromise quality unacceptably
+- Can't trade quality for deployment convenience
+
+**Decision:** Pivot to Kaggle demo with setup guide
+
+**Documentation:** [HUGGINGFACE_DEPLOYMENT_GUIDE.md](../HUGGINGFACE_DEPLOYMENT_GUIDE.md)
+
+---
+
+### Kaggle Demo (Session 3)
+
+**Status:** ✅ Successful
+
+**Approach:**
+- Gradio interface in Kaggle notebook
+- Free GPU T4 (30 hrs/week)
+- Step-by-step setup guide
+
+**Performance:**
+- Model loading: ~10 min (first time)
+- Generation: 3-5 min per function
+- Reliable in Kaggle environment
+
+**Documentation:** [KAGGLE_DEMO_GUIDE.md](../KAGGLE_DEMO_GUIDE.md)
+
+---
+
+### Deployment Lessons Learned
+
+**Infrastructure:**
+- Model size directly impacts deployment options
+- Free tiers have real limitations
+- Design for constraints upfront
+
+**Quality vs Deployment:**
+- Smaller models easier to deploy but quality suffers
+- CodeLlama-7B minimum for acceptable output
+- Can't compromise quality for convenience
+- Task requirements determine minimum model size
+
+**Strategy:**
+- Test deployment early
+- Have backup plan
+- Document failures honestly
+- Know when to pivot
+
+**Options:**
+- ~~Smaller models~~ ← Tested, quality too poor
+- Paid GPU (Modal, Replicate) for large models
+- Kaggle demo (chosen) - proves functionality
+- Video demos as alternative
+
 **Last Updated:** Session 1
 **Status:** Architecture defined, core modules implemented
 **Next Steps:** Add evaluation framework and web interface
