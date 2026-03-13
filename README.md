@@ -66,6 +66,30 @@ Quick summary:
 4. Run all cells
 5. Use Gradio interface
 
+
+### HuggingFace Spaces Deployment (Attempted)
+
+**📋 [HuggingFace Deployment Guide](HUGGINGFACE_DEPLOYMENT_GUIDE.md)** - Complete deployment attempt documentation
+
+**Status:** Deployment unsuccessful due to infrastructure limitations.
+
+**What was attempted:**
+- Deploy CodeLlama-7B to HF Spaces with ZeroGPU
+- Fix multiple build/runtime errors (Python version, Gradio compatibility)
+- Test smaller models (CodeGen-350M) for easier deployment
+
+**Key Learnings:**
+- Large models (13GB) require paid infrastructure
+- Free GPU services have strict timeouts
+- Smaller models produced unacceptable quality (incomplete/incorrect docs)
+- Can't compromise model capability for deployment convenience
+- 3-5 minute generation unsuitable for web deployment
+
+**Decision:** Pivoted to Kaggle demo with comprehensive setup guide.
+
+See [full deployment guide](HUGGINGFACE_DEPLOYMENT_GUIDE.md) for technical details, error logs, smaller model testing results, and lessons learned.
+
+---
 ## 💡 What Makes This Portfolio-Worthy
 
 ### Technical Depth

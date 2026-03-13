@@ -9,6 +9,7 @@
 - Deployment to HuggingFace Spaces for permanent demo URL
 - ZeroGPU integration for free GPU access
 - Multiple iterations to fix build and runtime errors
+- Testing smaller models for easier deployment
 
 ### Challenges Encountered
 - **Build errors:** Gradio/Python version compatibility issues
@@ -16,10 +17,12 @@
 - **Performance issues:** 3-6 minute generation times
 - **Quality issues:** Inconsistent output, sometimes non-English
 - **Infrastructure limitations:** 13GB model too large for reliable free tier
+- **Smaller model alternatives:** Tested CodeGen-350M and similar - quality unacceptable (incomplete/incorrect docs)
 
 ### Key Learnings
 - Free GPU services have strict timeouts and limitations
 - Large models (13GB+) require significant resources
+- Smaller models (CodeGen-350M) don't solve deployment if quality suffers - can't compromise on model capability
 - Model transfer CPU→GPU takes time each request on free tier
 - Deployment complexity increases with infrastructure constraints
 
@@ -30,12 +33,12 @@
 - Portfolio value is in evaluation framework and design, not just deployment
 
 ### Files Created/Updated
-- `KAGGLE_DEMO_GUIDE.md` - Complete step-by-step setup instructions
-- `README.md` - Updated with link to demo guide
+- `KAGGLE_DEMO_GUIDE.md` - Complete step-by-step setup instructions for Kaggle
+- `HUGGINGFACE_DEPLOYMENT_GUIDE.md` - HuggingFace Spaces deployment attempt documentation
+- `README.md` - Updated with links to both demo guides
 - `docs/session-notes.md` - This file
 
 ---
-
 ## Session 3 - 2026-03-11
 **Duration:** 1.5 hours
 **Status:** ✅ Complete
